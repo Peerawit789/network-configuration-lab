@@ -4,6 +4,8 @@ A hands-on Cisco Packet Tracer lab demonstrating fundamental network configurati
 
 ## Network Topology
 
+![Network Topology](topology.png)
+
 The lab consists of:
 
 - 2 Cisco 2911 Routers
@@ -36,17 +38,19 @@ Router-on-a-Stick is used for inter-VLAN routing between the VLANs and their res
 
 OSPF is configured between Router0 and Router1 using Area 0.
 
-Router0 advertises:
+### Router0 Advertised Networks
 
-- 192.168.10.0/24
-- 192.168.20.0/24
-- 10.0.12.0/30
+- `192.168.10.0/24`
+- `192.168.20.0/24`
+- `10.0.12.0/30`
 
-Router1 advertises:
+### Router1 Advertised Networks
 
-- 192.168.30.0/24
-- 192.168.40.0/24
-- 10.0.12.0/30
+- `192.168.30.0/24`
+- `192.168.40.0/24`
+- `10.0.12.0/30`
+
+The OSPF adjacency between Router0 and Router1 successfully reaches the `FULL` state.
 
 ## Technologies & Concepts
 
@@ -55,7 +59,7 @@ Router1 advertises:
 - IPv4 Subnetting
 - VLAN
 - Access Ports
-- 802.1Q Trunking
+- IEEE 802.1Q Trunking
 - Router-on-a-Stick
 - Inter-VLAN Routing
 - OSPF
@@ -64,25 +68,35 @@ Router1 advertises:
 
 ## Connectivity Test
 
-End-to-end connectivity was successfully tested between all VLANs.
+End-to-end connectivity was tested between different VLANs and routed networks.
 
-Example test from PC0:
+![Connectivity Test](ping-test.png)
 
-```text
-PC0 (192.168.10.10)
-        |
-      VLAN 10
-        |
-      Switch0
-        |
-      Router0
-        |
-       OSPF
-        |
-      Router1
-        |
-      Switch1
-        |
-      VLAN 40
-        |
-PC3 (192.168.40.10)
+PC0 (`192.168.10.10`) successfully communicated with:
+
+- PC1 - `192.168.20.10`
+- PC2 - `192.168.30.10`
+- PC3 - `192.168.40.10`
+
+This confirms successful VLAN configuration, inter-VLAN routing, and OSPF routing between both routers.
+
+## Packet Tracer File
+
+The complete Cisco Packet Tracer lab is available in:
+
+`network-configuration-lab.pkt`
+
+## Learning Outcomes
+
+This lab demonstrates practical understanding of:
+
+- VLAN creation and segmentation
+- Access port configuration
+- 802.1Q trunk configuration
+- Router-on-a-Stick
+- IPv4 addressing and subnetting
+- Inter-VLAN routing
+- OSPF configuration and neighbor establishment
+- Routing between multiple networks
+- End-to-end connectivity testing
+- Basic network troubleshooting
