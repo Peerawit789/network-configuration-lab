@@ -1,0 +1,27 @@
+enable
+configure terminal
+
+vlan 30
+name VLAN30
+exit
+
+vlan 40
+name VLAN40
+exit
+
+interface fastEthernet0/1
+switchport mode access
+switchport access vlan 30
+exit
+
+interface fastEthernet0/2
+switchport mode access
+switchport access vlan 40
+exit
+
+interface gigabitEthernet0/1
+switchport mode trunk
+exit
+
+end
+write memory
